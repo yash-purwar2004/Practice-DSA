@@ -97,3 +97,85 @@
 //     }
 //     cout<<rev;
 // }
+
+
+// Code for finding th nCr
+// #include<iostream>
+// using namespace std;
+// int func(int a){
+//     int arr=a;
+//     while(a!=1){
+//         arr= arr*(a-1);
+//         a--;
+//     }
+//     return arr;
+// }
+    
+//     int nCr(int a, int b){
+//         int num = func(a);
+//         int denom = func(b)*func(a-b);
+//         return num/denom;
+     
+//     }
+   
+// int main(){
+//     int N, R, diff;
+//     cin>>N>>R;
+//     cout<<nCr(N,R);
+// }
+
+
+// Print the counting of numbers
+// #include<iostream>
+// using namespace std;
+// int count(int a){
+//         for(int i=1; i<=a; i++){
+//             cout<<i<<" ";
+//         } 
+//         return 0;
+//     }
+   
+
+// int main(){
+//     int N;
+//     cin>>N;
+//     count(N);
+// }
+
+
+// Code for finding the nth term of AP
+// #include<iostream>
+// using namespace std;
+// int func(int n){
+//     int ap;
+//     for(int i=1; i<=n; i++){
+//         ap = 3*i + 7;    
+//     }
+    
+//     return ap;
+// }
+
+// int main(){
+//     int a;
+//     cin>>a;
+//     cout<<"The nth term of AP is "<<func(a);
+// }
+
+#include<iostream>
+using namespace std;
+bool func(int n){
+    int count = 0;
+    for(int i=0; i<=32; i++){
+        if(n==1){
+            count=count+1;
+        }
+        n=n>>1;
+    }
+    return count;
+}
+
+int main(){
+    int a, b;
+    cin>>a>>b;
+    cout<<func(a)+func(b);
+}
