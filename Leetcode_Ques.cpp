@@ -161,21 +161,48 @@
 //     cout<<"The nth term of AP is "<<func(a);
 // }
 
+
+
+// #include<iostream>
+// using namespace std;
+// bool func(int n){
+//     int count = 0;
+//     for(int i=0; i<=32; i++){
+//         if(n==1){
+//             count=count+1;
+//         }
+//         n=n>>1;
+//     }
+//     return count;
+// }
+
+// int main(){
+//     int a, b;
+//     cin>>a>>b;
+//     cout<<func(a)+func(b);
+// }
+
+
+// Code for adding the elements of array
 #include<iostream>
 using namespace std;
-bool func(int n){
-    int count = 0;
-    for(int i=0; i<=32; i++){
-        if(n==1){
-            count=count+1;
-        }
-        n=n>>1;
+int func(int num[], int n){
+    int d=0;
+    for(int j=0; j<n; j++){
+        d=d+num[j];
     }
-    return count;
+  
+    
+    return d;
 }
 
 int main(){
-    int a, b;
-    cin>>a>>b;
-    cout<<func(a)+func(b);
+    int size;
+    cin>>size;
+    int arr[size];
+    for(int i=0; i<size; i++){
+        cin>>arr[i];
+    }
+    
+    cout<<func(arr, size)<<" ";
 }
