@@ -184,25 +184,80 @@
 
 
 // Code for adding the elements of array
-#include<iostream>
-using namespace std;
-int func(int num[], int n){
-    int d=0;
-    for(int j=0; j<n; j++){
-        d=d+num[j];
-    }
+// #include<iostream>
+// using namespace std;
+// int func(int num[], int n){
+//     int d=0;
+//     for(int j=0; j<n; j++){
+//         d=d+num[j];
+//     }
   
     
-    return d;
-}
+//     return d;
+// }
 
-int main(){
-    int size;
-    cin>>size;
-    int arr[size];
-    for(int i=0; i<size; i++){
-        cin>>arr[i];
-    }
+// int main(){
+//     int size;
+//     cin>>size;
+//     int arr[size];
+//     for(int i=0; i<size; i++){
+//         cin>>arr[i];
+//     }
     
-    cout<<func(arr, size)<<" ";
-}
+//     cout<<func(arr, size)<<" ";
+// }
+
+
+// Code for reversing the array using for loop
+// #include<iostream>
+// using namespace std;
+// void func(int num[], int n){
+//     for(int j=n-1; j>=0; j--){
+//         cout<<num[j]<<" ";
+//     }
+// }
+
+// int main(){
+//     int arr[10]={1,2,3,4,5,6,7,8,9,10};
+//     int size=10;
+//     func(arr, size);
+// }
+
+
+// Code for swapping the adjacent elements;
+// #include<iostream>
+// using namespace std;
+// void func(int num[], int n){
+//     int temp;
+//     int k=0, i=1;
+//     for(int j=0; j<n; j=j+2){
+//         for( ;i>=k; i--){
+//             cout<<num[i]<<" ";
+//         }
+//         i=i+4;
+//         k=k+2;
+        
+//     }
+// }
+
+// int main(){
+//     int size;
+//     cin>>size;
+//     int arr[size];
+//     for(int i=0; i<size; i++){
+//         cin>>arr[i];    
+//     }
+    
+//     func(arr, size);
+// }
+
+
+// code for finding unique element
+// int findUnique(int *arr, int size)
+// {
+//     int k;
+//     for(int i=0; i<size; i++){
+//         k = k^arr[i];
+//     }
+//     return k;
+// }
