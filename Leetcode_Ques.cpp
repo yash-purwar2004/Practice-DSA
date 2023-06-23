@@ -263,25 +263,73 @@
 // }
 
 // Two pointer approach
-#include <bits/stdc++.h> 
-vector<int> findArrayIntersection(vector<int> &arr1, int n, vector<int> &arr2, int m)
-{
-	vector<int> ans;
-	int i=0, j=0;
-	while(i<n && j<m){
-			if(arr1[i]==arr2[j]){
-				ans.push_back(arr1[i]);
-				i++;
-				j++;
-			}
+// #include <bits/stdc++.h> 
+// vector<int> findArrayIntersection(vector<int> &arr1, int n, vector<int> &arr2, int m)
+// {
+// 	vector<int> ans;
+// 	int i=0, j=0;
+// 	while(i<n && j<m){
+// 			if(arr1[i]==arr2[j]){
+// 				ans.push_back(arr1[i]);
+// 				i++;
+// 				j++;
+// 			}
 
-			else if(arr1[i]<arr2[j]){
-				i++;
-			}
+// 			else if(arr1[i]<arr2[j]){
+// 				i++;
+// 			}
 
-			else{
-				j++;
-			}
-		}
-	return ans;
-}
+// 			else{
+// 				j++;
+// 			}
+// 		}
+// 	return ans;
+// }
+
+
+// Question of Pair
+// #include <bits/stdc++.h>
+// vector<vector<int>> pairSum(vector<int> &arr, int s){
+//    vector<vector<int>>ans;
+
+//    for(int i=0; i<arr.size(); i++){
+//       for(int j=i+1; j<arr.size(); j++){
+//          if(arr[i]+arr[j]==s){
+//             vector<int>temp;
+//             temp.push_back(min(arr[i], arr[j]));
+//             temp.push_back(max(arr[i], arr[j]));
+//             ans.push_back(temp);
+//          }
+//       }
+//    }
+//    sort(ans.begin(), ans.end());
+//    return ans;
+// }
+
+
+// Sort 0,1,2 coding ninja problems
+// #include <bits/stdc++.h> 
+// void sort012(int *arr, int n)
+// {
+//    int lo, hi, mid;
+//    lo=0;
+//    mid=0;
+//    hi=n-1;
+//    while(mid<=hi){
+//       if(arr[mid]==0){
+//          swap(arr[lo], arr[mid]);
+//          lo++;
+//          mid++;
+//       }
+
+//       else if(arr[mid]==1){
+//          arr[mid] == 1;
+//          mid++;
+//       }
+
+//       else if(arr[mid]==2){
+//          swap(arr[mid], arr[hi]);
+//          hi--;
+//       }
+//    }
+// }
