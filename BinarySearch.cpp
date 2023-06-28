@@ -214,3 +214,111 @@
 //         return binarySearch(arr, 0, pivot-1, k);
 //     }
 // }
+
+
+// Book Allocating Problem
+// bool isPossible(vector<int>& arr, int n, int m, int maxPages) {
+//     int studentCount = 1;
+//     int pagesAssigned = 0;
+
+//     for (int i = 0; i < n; i++) {
+//         if (arr[i] > maxPages) {
+//             return false;  // Cannot assign a book with more pages than maxPages
+//         }
+
+//         if (pagesAssigned + arr[i] > maxPages) {
+//             studentCount++;
+//             pagesAssigned = arr[i];
+
+//             if (studentCount > m) {
+//                 return false;  // Exceeded the number of students allowed
+//             }
+//         } else {
+//             pagesAssigned += arr[i];
+//         }
+//     }
+
+//     return true;
+// }
+
+// int findPages(vector<int>& arr, int n, int m) {
+//     int totalPages = 0;
+//     int maxPages = 0;
+
+//     // Calculate the total number of pages and the maximum number of pages in a single book
+//     for (int i = 0; i < n; i++) {
+//         totalPages += arr[i];
+//         maxPages = max(maxPages, arr[i]);
+//     }
+
+//     int start = maxPages;  // Start with the maximum number of pages in a single book
+//     int end = totalPages;  // End with the total number of pages
+//     int result = -1;
+
+//     while (start <= end) {
+//         int mid = start + (end - start) / 2;
+
+//         if (isPossible(arr, n, m, mid)) {
+//             result = mid;
+//             end = mid - 1;  // Look for a smaller value to minimize the maximum pages assigned
+//         } else {
+//             start = mid + 1;  // Look for a larger value
+//         }
+//     }
+
+//     return result;
+// }
+
+
+//Painter Partition Problem
+// bool isPossible(vector<int>& boards, int k, int maxPages) {
+//     int studentCount = 1;
+//     int pagesAssigned = 0;
+
+//     for (int i = 0; i < boards.size(); i++) {
+//         if (boards[i] > maxPages) {
+//             return false;  // Cannot assign a book with more pages than maxPages
+//         }
+
+//         if (pagesAssigned + boards[i] > maxPages) {
+//             studentCount++;
+//             pagesAssigned = boards[i];
+
+//             if (studentCount > k) {
+//                 return false;  // Exceeded the number of students allowed
+//             }
+//         } else {
+//             pagesAssigned += boards[i];
+//         }
+//     }
+
+//     return true;
+// }
+
+// int findLargestMinDistance(vector<int>& boards, int k) {
+//     int totalPages = 0;
+//     int maxPages = 0;
+
+//     // Calculate the total number of pages and the maximum number of pages in a single book
+//     for (int i = 0; i < boards.size(); i++) {
+//         totalPages += boards[i];
+//         maxPages = max(maxPages, boards[i]);
+//     }
+
+//     int start = maxPages;  // Start with the maximum number of pages in a single book
+//     int end = totalPages;  // End with the total number of pages
+//     int result = -1;
+
+//     while (start <= end) {
+//         int mid = start + (end - start) / 2;
+
+//         if (isPossible(boards, k, mid)) {
+//             result = mid;
+//             end = mid - 1;  // Look for a smaller value to minimize the maximum pages assigned
+//         } else {
+//             start = mid + 1;  // Look for a larger value
+//         }
+//     }
+
+//     return result;
+// }
