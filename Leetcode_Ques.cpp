@@ -336,58 +336,100 @@ int main(){
 
 
 // Sum of Two Arrays
-#include <bits/stdc++.h> 
-vector<int>reverse(vector<int>v){
-    int s = 0;
-    int e = v.size()-1;
+// #include <bits/stdc++.h> 
+// vector<int>reverse(vector<int>v){
+//     int s = 0;
+//     int e = v.size()-1;
 
-    while(s<e){
-        swap(v[s++], v[e--]);
-    }
+//     while(s<e){
+//         swap(v[s++], v[e--]);
+//     }
 
-    return v;
-}
+//     return v;
+// }
 
-vector<int> findArraySum(vector<int>&a, int n, vector<int>&b, int m) {
-	int i = n-1;
-    int j = m-1;
-    int carry = 0;
-    vector<int>ans;
+// vector<int> findArraySum(vector<int>&a, int n, vector<int>&b, int m) {
+// 	int i = n-1;
+//     int j = m-1;
+//     int carry = 0;
+//     vector<int>ans;
 
-    while(i>=0 && j>=0){
-        int val1 = a[i];
-        int val2 = b[j];
-        int sum = val1 + val2 + carry;
-        carry = sum/10;
-        int value = sum%10;
-        ans.push_back(value);
-        i--;
-        j--;
-    }
+//     while(i>=0 && j>=0){
+//         int val1 = a[i];
+//         int val2 = b[j];
+//         int sum = val1 + val2 + carry;
+//         carry = sum/10;
+//         int value = sum%10;
+//         ans.push_back(value);
+//         i--;
+//         j--;
+//     }
 
-    while(i>=0){
-        int sum = a[i] + carry;
-        carry = sum/10;
-        int value = sum%10;
-        ans.push_back(value);
-        i--;
-    }
+//     while(i>=0){
+//         int sum = a[i] + carry;
+//         carry = sum/10;
+//         int value = sum%10;
+//         ans.push_back(value);
+//         i--;
+//     }
 
-    while(j>=0){
-        int sum = b[j] + carry;
-        carry = sum/10;
-        int value = sum%10;
-        ans.push_back(value);
-        j--;
-    }
+//     while(j>=0){
+//         int sum = b[j] + carry;
+//         carry = sum/10;
+//         int value = sum%10;
+//         ans.push_back(value);
+//         j--;
+//     }
 
 
-    while(carry!=0){
-        int sum = carry;
-        carry = sum/10;
-        int value = sum%10;
-        ans.push_back(value);
-    }
+//     while(carry!=0){
+//         int sum = carry;
+//         carry = sum/10;
+//         int value = sum%10;
+//         ans.push_back(value);
+//     }
 
-    return reverse(ans);
-}
+//     return reverse(ans);
+// }
+
+
+
+// Check whether the number is palindrome or not
+// #include <bits/stdc++.h> 
+// string eliminate_unwanted(string s){
+//     int i = 0;
+//     string v;
+//     while (i < s.length()){
+//         if ((s[i] >= 'a' && s[i] <= 'z') || (s[i] >= '0' && s[i] <= '9')){
+//             v += s[i];
+//         }
+
+//         else if (s[i] >= 'A' && s[i] <= 'Z'){
+//             char lowercase = s[i] + 32;
+//             v += lowercase;
+//         }
+//         i++;
+//     }
+//     return v;
+// }
+
+ 
+
+// bool checkPalindrome(string a){
+//     a=eliminate_unwanted(a);
+//     int s = 0;
+//     int e = a.size() - 1;
+
+//     while (s <= e){
+//         if (a[s] != a[e])
+//             return false;
+
+//         else{
+//             s++;
+//             e--;
+//         }
+
+//     }
+
+//     return true;
+// }
