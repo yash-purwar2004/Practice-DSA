@@ -95,3 +95,39 @@ int main() {
     cout<<upar(arr)<<endl;
     return 0;
 }
+
+
+
+// Double Pointers
+
+#include <iostream>
+using namespace std;
+void update(int **l){
+    // kya kuch change hoga - no change
+    // l=l+1;
+    // kya kuch change hoga - yes
+    // *l=*l+1;
+    // kya kuch change hoga?
+    **l=**l+1;
+}
+
+int main(){
+int i=10;
+int *p = &i;
+int **l = &p;
+
+cout<<"Before"<<endl;
+cout<<i<<endl;
+cout<<p<<endl;
+cout<<l<<endl;
+
+update(l);
+
+cout<<"After"<<endl;
+cout<<i<<endl;
+cout<<p<<endl;
+cout<<l<<endl;
+
+
+return 0;
+}
