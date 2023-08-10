@@ -131,3 +131,80 @@ cout<<l<<endl;
 
 return 0;
 }
+
+
+// Reference Variable
+#include <iostream>
+using namespace std;
+void update(int &n){
+    n++;
+}
+
+int main() {
+    int i = 5;
+    int &j = i;
+    i++;
+    cout<<i<<endl;
+    j++;
+    cout<<j<<endl;
+    
+    int k=4;
+    cout<<"Before "<<k<<endl;
+    update(k);
+    cout<<"after "<<k<<endl;
+    return 0;
+}
+
+
+// Bad Practice
+int &func(int a){
+    int num = a;
+    int &ans = num;
+    return ans;
+}
+
+// Bad Practice
+int *func(int n){
+    int *ptr = &n;
+    return ptr;
+}
+
+
+// Make a 2D array using double pointer
+#include <iostream>
+using namespace std;
+
+int main() {
+    int row;
+    cin>>row;
+    
+    int col;
+    cin>>col;
+    
+
+    int **arr = new int *[row];
+    for(int i=0; i<row; i++){
+        arr[i] = new int[col];
+    }
+    
+    for(int i=0; i<row; i++){
+        for(int j=0; j<col; j++){
+            cin>>arr[i][j];
+        }
+    }
+    
+    cout<<endl;
+    for(int i=0; i<row; i++){
+        for(int j = 0; j<col; j++){
+            cout<<arr[i][j]<<" ";
+        }
+        cout<<endl;
+    }
+    
+    for(int i=0; i<row; i++){
+        delete []arr[i];
+    }
+    
+    delete []arr;
+    return 0;
+}
