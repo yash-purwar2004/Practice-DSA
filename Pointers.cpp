@@ -208,3 +208,24 @@ int main() {
     delete []arr;
     return 0;
 }
+
+
+// Code of Dclaring a macro keyword
+#include<iostream>
+using namespace std;
+// #define PI 3
+#define AREA(l,b) (l*b);
+#define min(a,b) (((a)<(b)) ? (a):(b))
+
+int main(){
+//     cout<<PI * 1 * 1<< endl;
+    
+    int l1, l2, area;
+    cin>>l1>>l2;
+    area = AREA(l1,l2)
+    cout<<area<<endl;
+    
+    int a1, b1;
+    cin>>a1>>b1;
+    cout<<"Minimum value between a1 and b1 is "<<min(a1,b1)<<endl;
+}
