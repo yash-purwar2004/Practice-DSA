@@ -244,3 +244,111 @@ int main(){
     cout<<tail->data<<endl;
     
 }
+
+
+
+
+
+// Code of Double Linked List, insert at head, tail, any position, print the linked list
+#include<iostream>
+using namespace std;
+
+class Node {
+public:
+    int data;
+    Node* next;
+    Node* prev;
+};
+
+int length(Node* head) { // Removed the reference from the head parameter
+    Node* temp = head;
+    int len = 0;
+    while (temp != NULL) {
+        len++;
+        temp = temp->next;
+    }
+    return len;
+}
+
+void print(Node* head) { // Removed the reference from the head parameter
+    Node* temp = head;
+    while (temp != NULL) {
+        cout << temp->data << " ";
+        temp = temp->next;
+    }
+}
+
+void insertAtHead(Node*& head, int d) { // Added a reference to head
+    Node* node2 = new Node;
+    node2->next = head;
+    if (head != NULL) {
+        head->prev = node2;
+    }
+    node2->prev = NULL;
+    node2->data = d;
+    head = node2;
+}
+
+void insertAtTail(Node*& tail, int d) { // Added a reference to tail
+    Node* temp = new Node;
+    temp->data = d;
+    temp->next = NULL;
+    temp->prev = tail;
+    if (tail != NULL) {
+        tail->next = temp;
+    }
+    tail = temp;
+}
+
+void insertAtPosition(Node*& head, Node*& tail, int position, int d) { // Added references to head and tail
+    if (position == 1) {
+        insertAtHead(head, d);
+        return;
+    }
+
+    Node* pos = head;
+    int cnt = 1;
+
+    while (cnt < position - 1) {
+        pos = pos->next;
+        cnt++;
+        if (pos == NULL) {
+            cerr << "Position is out of range." << endl;
+            return;
+        }
+    }
+
+    if (pos->next == NULL) {
+        insertAtTail(tail, d);
+        return;
+    }
+
+    Node* nodetoinsert = new Node;
+    nodetoinsert->next = pos->next;
+    pos->next->prev = nodetoinsert;
+    pos->next = nodetoinsert;
+    nodetoinsert->prev = pos;
+    nodetoinsert->data = d;
+}
+
+int main() {
+    Node* node1 = new Node;
+    node1->data = 23;
+    node1->next = NULL;
+    node1->prev = NULL;
+
+    Node* head = node1;
+    Node* tail = node1;
+    cout << length(head) << endl;
+
+    insertAtHead(head, 10);
+    insertAtHead(head, 1);
+    insertAtHead(head, 45);
+
+    insertAtTail(tail, 89);
+
+    insertAtPosition(head, tail, 2, 100);
+    print(head);
+
+    return 0;
+}
