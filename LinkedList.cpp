@@ -352,3 +352,117 @@ int main() {
 
     return 0;
 }
+
+
+
+
+
+
+
+
+
+
+// Code of circular linked list, insertion, print, delete
+#include<iostream>
+using namespace std;
+
+class Node {
+public:
+    int data;
+    Node* next;
+};
+
+void insertNode(Node* &tail, int element, int d) {
+    // Create a new node
+    Node* newNode = new Node;
+    newNode->data = d;
+    
+    if (tail == NULL) {
+        // If the list is empty, make the new node the tail
+        tail = newNode;
+        tail->next = tail; // Circular reference to itself
+    }
+    else {
+        Node* curr = tail->next; // Start from the first node
+        while (curr->data != element) {
+            curr = curr->next;
+            // If we looped back to the tail, element not found
+            if (curr == tail->next) {
+                cout << "Element not found in the list." << endl;
+                return;
+            }
+        }
+
+        // Insert the new node after the element
+        newNode->next = curr->next;
+        curr->next = newNode;
+
+        // If the element is the tail, update the tail to the new node
+        if (curr == tail) {
+            tail = newNode;
+        }
+    }
+}
+
+void print(Node* tail) {
+    if (tail == NULL) {
+        cout << "List is empty." << endl;
+        return;
+    }
+
+    Node* temp = tail->next;
+    
+    do {
+        cout << temp->data << " ";
+        temp = temp->next;
+    } while (temp != tail->next);
+    
+    cout << endl;
+}
+
+void deletion(Node* &tail, int value) {
+    if (tail == NULL) {
+        cout << "List is empty, Please check again" << endl;
+        return;
+    }
+    
+    Node* prev = tail;
+    Node* curr = prev->next;
+    
+    if (curr == tail && curr->data == value) {
+        // If there's only one node in the list and it matches the value
+        delete curr;
+        tail = NULL;
+        return;
+    }
+
+    while (curr->data != value) {
+        prev = curr;
+        curr = curr->next;
+        if (curr == tail->next) {
+            cout << "Value not found in the list." << endl;
+            return;
+        }
+    }
+
+    prev->next = curr->next;
+    if (curr == tail) {
+        tail = prev;
+    }
+    delete curr;
+}
+
+int main() {
+    Node* tail = NULL;
+    insertNode(tail, 3, 2);
+    insertNode(tail, 2, 1); // Insert another element
+
+    cout << "Circular Linked List: ";
+    print(tail);
+    
+    deletion(tail, 2);
+    cout << "Circular Linked List after deletion: ";
+    print(tail);
+    
+    return 0;
+}
