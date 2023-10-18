@@ -107,7 +107,7 @@ class Node{
     Node* next;
 };
 
-void insertAtPosition(Node* &tail, Node* &head, int position, int d){
+void insertAtPosition(Node* &head, int position, int d){
     if(position == 1){
         insertAtHead(head, d);
         return;
