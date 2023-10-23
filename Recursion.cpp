@@ -188,3 +188,33 @@ string reverseString(string str)
 	reverse(str, 0, size);
 	return str;
 }
+
+
+// Code for check whether the number is palindrome or not by using a recursion
+#include <bits/stdc++.h> 
+
+bool check(int arr[], int i, int j){
+    if(i >= j){
+        return true;
+    }
+
+    if(arr[i] != arr[j]){
+        return false;
+    }
+
+    return check(arr, i + 1, j - 1);
+}
+
+bool checkPalindrome(long long N)
+{
+    int i = 0;
+    int arr[64];
+    while(N != 0){
+        int ans = N % 2;
+        N = N / 2;
+        arr[i] = ans;
+        i++;
+    }
+
+    return check(arr, 0, i - 1);
+}
