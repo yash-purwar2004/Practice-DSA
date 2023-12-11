@@ -22,6 +22,70 @@ int main()
 
 
 
+
+// Merge sort using a recursion
+
+void mergeTwoArrays(vector < int > & arr, int s, int e){
+    int mid = (s+e)/2;
+    int len1 = mid - s + 1;
+    int len2  = e - mid;
+    int *first = new int[len1];
+    int *second = new int[len2];
+
+    int mainArrayIndex = s;
+
+    for(int i=0; i<len1; i++){
+        first[i] = arr[mainArrayIndex++]; 
+    }
+
+    for(int i=0; i<len2; i++){
+        second[i] = arr[mainArrayIndex++]; 
+    }
+
+    int index1 = 0;
+    int index2 = 0;
+    mainArrayIndex = s;
+
+    while(index1<len1 && index2<len2){
+        if(first[index1]<second[index2]){
+            arr[mainArrayIndex++] = first[index1++];
+        }
+
+        else{
+            arr[mainArrayIndex++] = second[index2++];
+        }
+    }
+
+    while(index1<len1){
+        arr[mainArrayIndex++] = first[index1++];
+    }
+
+    while(index2<len2){
+        arr[mainArrayIndex++] = second[index2++];
+    }
+
+}
+
+
+void merge(vector < int > & arr, int s, int e){
+    if(s>=e){
+        return;
+    }
+
+    int mid = (s+e)/2;
+
+    merge(arr, s, mid);
+    merge(arr, mid+1, e);
+
+    mergeTwoArrays(arr, s, e);
+}
+
+void mergeSort(vector < int > & arr, int n) {
+        int s = 0;
+        int e = n-1;
+        merge(arr, s, e);
+}
+
 // Code of 2 raise to power 'n' by using factorial
 #include<iostream>
 using namespace std;
@@ -59,9 +123,6 @@ void reachHome(int src, int dest){
     reachHome(src, dest);
 }
 
-
-
-// Sorting by using a Recursion
 int main(){
     int dest = 10;
     int src = 1;
@@ -70,6 +131,9 @@ int main(){
     
     reachHome(src,dest);
 }
+
+
+// Soring using recursion
 
 #include<iostream>
 using namespace std;
@@ -218,3 +282,6 @@ bool checkPalindrome(long long N)
 
     return check(arr, 0, i - 1);
 }
+
+
+
