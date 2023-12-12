@@ -437,39 +437,183 @@ int main(){
 
 
 // code for maximum occuring character in a string
+// #include <iostream>
+// #include <string>
+// using namespace std;
+
+// char getmaxcharacter(string s) {
+//     int arr[26] = {0}; // Initialize the array with zeros
+
+//     for (int i = 0; i < s.length(); i++) {
+//         char ch = s[i];
+//         int number = 0;
+
+//         if (ch >= 'a' && ch <= 'z') {
+//             number = ch - 'a';
+//         } else if (ch >= 'A' && ch <= 'Z') { // Use 'else if' here
+//             number = ch - 'A';
+//         }
+//         arr[number]++;
+//     }
+
+//     int maxi = -1, ans = 0;
+//     for (int i = 0; i < 26; i++) { // Correct the loop limit to 26
+//         if (maxi < arr[i]) { // Use '<' instead of '='
+//             ans = i;
+//             maxi = arr[i];
+//         }
+//     }
+//     char finalans = 'a' + ans;
+//     return finalans;
+// }
+
+// int main() {
+//     string s;
+//     cin >> s;
+//     cout << getmaxcharacter(s) << endl;
+//     return 0;
+// }
+
+
+
+// Code for Permutation in String
+class Solution {
+private:
+bool ifcheck(int a[26], int b[26]){
+    for(int i=0; i<26; i++){
+        if(a[i] != b[i]){
+            return 0;
+        }
+    }
+    return 1;
+}
+
+public:
+    bool checkInclusion(string s1, string s2) {
+        // Character count array
+        int count1[26]={0};
+        for(int i=0; i<s1.length(); i++){
+            int index = s1[i] - 'a';
+            count1[index]++;
+        }
+
+        // reverse s2 string in window of size s1 length and compare
+        int i=0;
+        int window = s1.length();
+        int count2[26]={0};
+
+        //running for first window
+        while(i<window && i<s2.length()){
+            int index = s2[i] - 'a';
+            count2[index]++;
+            i++;
+        }
+
+        if(ifcheck(count1, count2)){
+            return 1;
+        }
+
+        // aage window process karo
+        while(i<s2.length()){
+            char newchar = s2[i];
+            int index = newchar - 'a';
+            count2[index]++;
+
+            char oldchar = s2[i-window];
+            index = oldchar - 'a';
+            count2[index]--;
+
+            i++;
+
+            if(ifcheck(count1, count2)){
+                return 1;
+            }
+        }
+        return 0;
+    }
+};
+
+
+// Compression of String
+
+class Solution {
+public:
+    int compress(vector<char>& chars) {
+        int i = 0;
+        int ansIndex = 0;
+        int n = chars.size();
+
+        while(i<n){
+            int j = i+1;
+            while(j<n && chars[i]==chars[j]){
+                j++;
+            }
+        // yaha kab aaoge
+        // ya toh vector pura traverse kardia ya fir new character encounter kiya hai
+
+        // old character store kr lo
+        chars[ansIndex++]=chars[i];
+
+        int count = j-i;
+        if(count>1){
+            string cnt = to_string(count);
+            for(char ch:cnt){
+                chars[ansIndex++]=ch;
+            }
+        }
+
+        i=j;
+    }
+        return ansIndex;
+    }
+};
+
+
+// Code for finding the GCD
 #include <iostream>
-#include <string>
 using namespace std;
 
-char getmaxcharacter(string s) {
-    int arr[26] = {0}; // Initialize the array with zeros
-
-    for (int i = 0; i < s.length(); i++) {
-        char ch = s[i];
-        int number = 0;
-
-        if (ch >= 'a' && ch <= 'z') {
-            number = ch - 'a';
-        } else if (ch >= 'A' && ch <= 'Z') { // Use 'else if' here
-            number = ch - 'A';
-        }
-        arr[number]++;
+int gcd(int a, int b){
+    if(a==0){
+        return b;
     }
-
-    int maxi = -1, ans = 0;
-    for (int i = 0; i < 26; i++) { // Correct the loop limit to 26
-        if (maxi < arr[i]) { // Use '<' instead of '='
-            ans = i;
-            maxi = arr[i];
+    
+    if(b==0){
+        return a;
+    }
+    
+    while(a!=b){
+        if(a>b){
+            a=a-b;
+        }
+        
+        else{
+            b=b-a;
         }
     }
-    char finalans = 'a' + ans;
-    return finalans;
+    return a;
 }
 
 int main() {
-    string s;
-    cin >> s;
-    cout << getmaxcharacter(s) << endl;
+    int a, b;
+    cout<<"Enter the values of 'a' and 'b'"<<endl;
+    cin>>a>>b;
+    
+    int ans = gcd(a,b);
+    cout<<"The GCD of "<< a <<"  and "<< b <<" is: "<< ans <<endl;
     return 0;
 }
+
+
+// Largest ODD number in a String
+class Solution {
+public:
+    string largestOddNumber(string num) {
+        for (int i = num.length() - 1; i >= 0; i--) {
+            if ((num[i] - '0') % 2 == 1) {
+                return num.substr(0, i + 1);
+            }
+        }
+        return "";        
+    }
+};
