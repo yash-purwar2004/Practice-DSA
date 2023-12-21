@@ -466,3 +466,49 @@ int main() {
     
     return 0;
 }
+
+
+// code for converting array into a linked list
+#include<iostream>
+using namespace std;
+
+class Node{
+    public:
+    int data;
+    Node* next;
+};
+
+void insertAtTail(Node* &tail, int d){
+    Node* temp = new Node;
+    temp -> data = d;
+    temp->next= NULL;
+    tail -> next = temp;
+    tail = temp;
+}
+
+void print(Node* &head){
+    Node* temo = head; // alag se pointer bana lia
+    while(temo!=NULL){
+    cout<<temo -> data<<" ";
+        temo = temo -> next;
+    }
+    cout<<endl;
+}
+
+int main(){
+    int arr[5] = {1,2,7,4,50};
+    Node* node1 = new Node;
+    node1->data = arr[0];
+    node1->next = NULL;
+    
+    Node* head = node1;
+    Node* tail = node1;
+
+    
+    for(int i=1; i<5; i++){
+        insertAtTail(tail, arr[i]);
+    }
+    
+    print(head);
+    
+}
