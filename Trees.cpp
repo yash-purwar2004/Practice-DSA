@@ -182,3 +182,69 @@ int main(){
     inOrderTraversal(root);
     return 0;
 }
+
+
+
+
+
+
+
+// Post Order Traversal Using 2 Stack
+#include<iostream>
+#include<stack>
+using namespace std;
+class Node{
+    public:
+    int data;
+    Node* left;
+    Node* right;
+};
+
+Node* newNode(int data){
+    Node* temp = new Node;
+    temp->data = data;
+    temp->right = temp->left = NULL;
+    return temp;
+}
+
+
+void postOrderTraversal(Node* root){
+    stack<Node*>s1;
+    stack<Node*>s2;
+    s1.push(root);
+ 
+    
+    while(s1.empty() == false){
+        Node* temp = s1.top();
+        s2.push(s1.top());
+        s1.pop();
+        
+        if(temp->left != NULL){
+            s1.push(temp->left);
+        }
+        
+        if(temp->right != NULL){
+            s1.push(temp->right);
+        }
+    }
+    
+    while(s2.empty() == false){
+        cout<<s2.top()->data<<" ";
+        s2.pop();
+    }
+}
+
+int main(){
+    Node* root = newNode(1);
+    root->left = newNode(2);
+    root->right = newNode(3);
+    root->left->left = newNode(4);
+    root->left->right = newNode(5);
+    root->right->left = newNode(6);
+    root->right->left->right = newNode(7);
+    root->right->left->right->right = newNode(8);
+    
+    cout << "Post Order traversal of binary tree is \n";
+    postOrderTraversal(root);
+    return 0;
+}
