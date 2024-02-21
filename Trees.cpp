@@ -248,3 +248,48 @@ int main(){
     postOrderTraversal(root);
     return 0;
 }
+
+
+
+
+
+
+// Find Maximum Depth of Binary tree
+#include<iostream>
+using namespace std;
+
+class Node{
+    public:
+    int data;
+    Node* left;
+    Node* right;
+};
+
+Node* newNode(int data){
+    Node* temp = new Node;
+    temp->data = data;
+    temp->left = temp->right = NULL;
+    return temp;
+}
+
+int maxDepth(Node* root){
+    if(root == NULL){
+        return 0;
+    }
+    
+    int lh = maxDepth(root->left);
+    int rh = maxDepth(root->right);
+    
+    return 1 + max(lh,rh);
+}
+
+int main(){
+    Node* root = newNode(1);
+    root->left = newNode(2);
+    root->right = newNode(3);
+    root->right->left = newNode(4);
+    root->right->left->left = newNode(5);
+    root->right->right = newNode(6);
+    
+    cout<<maxDepth(root)<<endl;
+}
